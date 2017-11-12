@@ -62,6 +62,15 @@ namespace MVVMToolkit.ViewModels
         {
             VerifyPropertyName(propertyName);
             properties.TryGetValue(propertyName, out object value);
+            // if not value in properties check if type is value type, create new instance of property type
+            if(value == null)
+            {
+                Type type = GetType().GetProperty(propertyName).PropertyType;
+                if (type.IsValueType)
+                {
+                    return Activator.CreateInstance(type);
+                }
+            }
             return value;
         }
 
