@@ -44,7 +44,7 @@ namespace MVVMToolkit.Commands
         /// </summary>
         /// <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
         /// <returns>true if this command can be executed; otherwise, false.</returns>
-        public bool CanExecute(object parameter) => _canExecute == null ? true : _canExecute();
+        public bool CanExecute(object parameter) => _canExecute == null || _canExecute();
 
         /// <summary>
         ///  Defines the method to be called when the command is invoked.
@@ -95,7 +95,7 @@ namespace MVVMToolkit.Commands
         /// </summary>
         /// <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
         /// <returns>true if this command can be executed; otherwise, false.</returns>
-        public bool CanExecute(object parameter) => _canExecute == null ? true : _canExecute((T) parameter);
+        public bool CanExecute(object parameter) => _canExecute == null || _canExecute((T) parameter);
 
         /// <summary>
         ///  Defines the method to be called when the command is invoked.
